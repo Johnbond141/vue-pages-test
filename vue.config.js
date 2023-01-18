@@ -1,3 +1,3 @@
 module.exports = {
-    publicPath: '/ISG-CMS/'
-}
+    publicPath: process.env.NODE_ENV === "production" ? "/vue-pages-test/" : "/",
+  };

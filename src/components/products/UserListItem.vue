@@ -2,18 +2,19 @@
   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xxl-3 p-2">
     <div class="card product-card h-100">
       <div class="card-body">
-        <h2>{{product.cardNumber}}</h2>
+        <h2>{{user.username}}</h2>
         <div class="float-start">
-          <p>{{ product.cardName }}</p>
+          <p>{{ user.email }}</p>
           <p>
-            <small>{{ product.cardBody }}</small>
+            <small>{{ user.role }}</small>
           </p>
+          <img :src="user.picture">
         </div>
-        <!-- <span class="price float-end">{{ product.type }}</span> -->
+        <!-- <span class="price float-end">{{ user.type }}</span> -->
       </div>
       <div class="card-footer">
-        <button class="btn btn-warning" @click="editProduct(product.id)">Edit</button>&nbsp;&nbsp;
-        <button class="btn btn-danger" @click="deleteProduct(product.id)">Delete</button>
+        <button class="btn btn-warning" @click="editProduct(user.id)">Edit</button>&nbsp;&nbsp;
+        <button class="btn btn-danger" @click="deleteProduct(user.id)">Delete</button>
       </div>
     </div>
   </div>
@@ -23,9 +24,9 @@
 import axios from '../../axios-auth'
 
 export default {
-  name: "ProductListItem",
+  name: "UserListItem",
   props: {
-    product: Object,
+    user: Object,
   },
   methods: {
     deleteProduct(id) {

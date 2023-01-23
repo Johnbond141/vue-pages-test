@@ -6,10 +6,10 @@
             Add Cards
           </button>
       <div class="row mt-3">
-        <product-list-item
-          v-for="product in products"
-          :key="product.id"
-          :product="product"
+        <user-list-item
+          v-for="user in users"
+          :key="user.id"
+          :user="user"
           @update="update"
         />
       </div>
@@ -20,16 +20,16 @@
 <script>
 import axios from "../../axios-auth.js";
 
-import ProductListItem from "./ProductListItem.vue";
+import UserListItem from "./UserListItem.vue";
 
 export default {
-  name: "ProductList",
+  name: "UserList",
   components: {
-    ProductListItem,
+    UserListItem,
   },
   data() {
     return {
-      products: [],
+      users: [],
     };
   },
   mounted() {
@@ -38,10 +38,10 @@ export default {
   methods: {
     update() {
       axios
-        .get("https://cardisc.azurewebsites.net/api/cards")
+        .get("https://cardisc.azurewebsites.net/api/users")
         .then((result) => {
           console.log(result);
-          this.products = result.data;
+          this.users = result.data;
         })
         .catch((error) => console.log(error));
     },
